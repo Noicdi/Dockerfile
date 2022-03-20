@@ -1,4 +1,4 @@
-From ubuntu
+From ubuntu:20.04
 
 ENV INSTALL="nginx openssh-server rsync"
 
