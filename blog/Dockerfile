@@ -19,11 +19,10 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
 		&& apt-get clean -y \
 		&& rm -rf /var/lib/apt/lists/*
 
-
 COPY rsyncd.conf /etc/rsyncd.conf
-COPY nginx.conf /etc/nginx/nginx.conf
 COPY authorized_keys /root/.ssh/authorized_keys
 COPY run.sh /run.sh
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80 22
 
