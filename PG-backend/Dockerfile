@@ -3,10 +3,11 @@ From ubuntu:20.04
 ENV DEPLIB="libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev libavformat-dev libavcodec-dev libavutil-dev"
 ENV BUILD="make gcc git"
 
-RUN echo "deb http://mirror.nju.edu.cn/ubuntu/ focal main restricted universe multiverse" > /etc/apt/sources.list \
-    && echo "deb http://mirror.nju.edu.cn/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list \
-    && echo "deb http://mirror.nju.edu.cn/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list \
-    && echo "deb http://mirror.nju.edu.cn/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list \
+RUN echo "deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse" > /etc/apt/sources.list \
+    && echo "deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse" >> /etc/apt/sources.list \
     && apt-get update \
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
