@@ -17,12 +17,12 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
     && git config --global http.sslVerify false \
     && git clone https://gitee.com/xQmQ/PG-backend.git /nginx --depth=1 \
     && cd /nginx/nginx-1.20.2/ \
-    && ./configure --prefix=/usr/local/nginx --add-module=../nginx-hls-module --add-module=../nginx-upload-module --with-http_ssl_module \
+    && ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx-hls-module --add-module=../nginx-upload-module \
     && make -j$(cat /proc/cpuinfo| grep "processor"| wc -l) \
     && make install \
     && ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx \
-    && mkdir /hls \
     && cd / \
+    && mkdir /hls \
     && rm -rf /nginx \
     && apt-get remove -y --purge ${BUILD} \
     && apt-get autoremove -y --purge \
