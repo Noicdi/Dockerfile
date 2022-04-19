@@ -13,6 +13,7 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && apt-get install -y --no-install-recommends tzdata \
+    #####
     && apt-get install -y --no-install-recommends ${NGX_DEPLIB} ${MOD_DEPLIB} ${BUILD} \
     && git config --global http.sslVerify false \
     && git clone https://gitee.com/xQmQ/PG-backend.git /nginx --depth=1 \
@@ -25,6 +26,7 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
     && mkdir /hls \
     && rm -rf /nginx \
     && apt-get remove -y --purge ${BUILD} \
+    #####
     && apt-get autoremove -y --purge \
     && apt-get autoclean -y \
     && apt-get clean -y \
