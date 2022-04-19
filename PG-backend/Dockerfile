@@ -1,6 +1,7 @@
 From ubuntu:20.04
 
-ENV DEPLIB="libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev libavformat-dev libavcodec-dev libavutil-dev"
+ENV NGX_DEPLIB="libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev"
+ENV MOD_DEPLIB="libavformat-dev libavcodec-dev libavutil-dev"
 ENV BUILD="make gcc git"
 
 RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe multiverse" > /etc/apt/sources.list \
@@ -12,8 +13,7 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && apt-get install -y --no-install-recommends tzdata \
-    && apt-get install -y --no-install-recommends ${DEPLIB} \
-    && apt-get install -y --no-install-recommends ${BUILD} \
+    && apt-get install -y --no-install-recommends ${NGX_DEPLIB} ${MOD_DEPLIB} ${BUILD} \
     && git config --global http.sslVerify false \
     && git clone https://gitee.com/xQmQ/PG-backend.git /nginx --depth=1 \
     && cd /nginx/nginx-1.20.2/ \
@@ -25,7 +25,7 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
     && cd / \
     && rm -rf /nginx \
     && apt-get remove -y --purge ${BUILD} \
-#&& apt-get remove -y --purge ${DEPLIB} \
+    && apt-get remove -y --purge ${MOD_DEPLIB} \
     && apt-get autoremove -y --purge \
     && apt-get autoclean -y \
     && apt-get clean -y \
