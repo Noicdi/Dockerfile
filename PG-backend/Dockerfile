@@ -1,6 +1,6 @@
 From ubuntu:20.04
 
-ENV NGX_DEPLIB="libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev"
+ENV NGX_DEPLIB="libpcre3 libpcre3-dev openssl libssl-dev zlib1g zlib1g-dev"
 ENV MOD_DEPLIB="libavformat-dev libavcodec-dev libavutil-dev"
 ENV BUILD="make gcc git"
 
