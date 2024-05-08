@@ -19,7 +19,7 @@ RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe 
     && git clone https://gitee.com/Noicdi/PG-backend.git /nginx --depth=1 \
     && cd /nginx/nginx-1.20.2/ \
     && ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx-hls-module --add-module=../nginx-upload-module \
-    && make -j$(cat /proc/cpuinfo| grep "processor"| wc -l) \
+    && make -j \
     && make install \
     && ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx \
     && cd / \
